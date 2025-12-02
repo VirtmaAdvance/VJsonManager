@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="VJsonManager.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>

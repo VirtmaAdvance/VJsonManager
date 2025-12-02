@@ -1,0 +1,11 @@
+{
+	"name": "VJsonManager",
+	"description": "Provides a means to serialize, deserialize, access, and manage JSON objects and strings.",
+	"dependencies": {
+		"core": "*"
+	},
+	"files": [
+		"main.ts"
+	],
+	"public": true
+}
