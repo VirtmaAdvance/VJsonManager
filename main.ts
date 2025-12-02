@@ -232,6 +232,21 @@ namespace VJsonManager {
         }
 
         /**
+         * Determines if the given value is a valid json string.
+         * @param jsonString
+         * @returns
+         */
+        //% blockId=json_isValidJsonString block="json is %jsonString a valid JSON string"
+        static isValidJsonString(jsonString: string): boolean {
+            try {
+                JsonObject.parse(jsonString);
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        /**
          * Returns a copy of the keys array.
          */
         //% blockId=json_keys block="json keys of %obj"
