@@ -206,7 +206,7 @@ namespace VJsonManager {
          * Basic string getter.
          */
         //% blockId=json_get block="json get %key from %json"
-        static get(key: string, json: JsonObject): string {
+        static get(key: string, json: JsonObject): any {
             let index = json.indexOfKey(key);
             if (index >= 0)
                 return json._values[index]??"";
