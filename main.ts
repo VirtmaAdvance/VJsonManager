@@ -108,9 +108,7 @@ namespace VJsonManager {
                     }
                     value = json.substr(valStart, i - valStart).trim();
                 }
-
-                obj.set(key, value);
-
+                JsonObject.set(key, value, obj);
                 // loop continues, next iteration will eat the comma / '}' / whitespace
             }
 
@@ -127,7 +125,7 @@ namespace VJsonManager {
                 if (i > 0) result = result + ",";
                 result = result + "\"" + this._keys[i] + "\":";
 
-                let v = this._values[i]??"";
+                let v = this._values[i] ?? "";
 
                 // Decide if we should emit as bare value or quoted string
                 let isNum = true;
@@ -163,51 +161,73 @@ namespace VJsonManager {
         /**
          * Convenience static wrapper for stringify.
          */
-        //% blockId=json_stringify block="stringify json object %obj"
+        //% blockId=json_stringify block="stringify json object %obj from %json"
         static stringify(obj: JsonObject): string {
             return obj.toString();
         }
 
         /**
+         * Determines if the specified key exists within the collection.
+         * @param key
+         * @param json
+         * @returns
+         */
+        //% blockId=json_containsKey block="json contains %key from %json"
+        static containsKey(key: string, json: JsonObject): boolean {
+            return json._keys.includes(key);
+        }
+
+        /**
+         * Determines if the specified value exists within the collection.
+         * @param value
+         * @param json
+         * @returns
+         */
+        //% blockId=json_containsValue block="json contains %value from %json"
+        static containsValue(value: any, json: JsonObject): boolean {
+            return json._values.includes(value);
+        }
+
+        /**
          * Set value (stored as string internally).
          */
-        //% blockId=json_set block="json set %key to %value"
-        set(key: string, value: string): void {
-            let index = this.indexOfKey(key);
+        //% blockId=json_set block="json set %key to %value from %json"
+        static set(key: string, value: string, json: JsonObject): void {
+            let index = json.indexOfKey(key);
             if (index >= 0) {
-                this._values[index] = value;
+                json._values[index] = value;
             } else {
-                this._keys.push(key);
-                this._values.push(value);
+                json._keys.push(key);
+                json._values.push(value);
             }
         }
 
         /**
          * Basic string getter.
          */
-        //% blockId=json_get block="json get %key"
-        get(key: string): string {
-            let index = this.indexOfKey(key);
+        //% blockId=json_get block="json get %key from %json"
+        static get(key: string, json: JsonObject): string {
+            let index = json.indexOfKey(key);
             if (index >= 0)
-                return this._values[index]??"";
+                return json._values[index]??"";
             return "";
         }
 
         /**
          * Get a number value (parseInt).
          */
-        //% blockId=json_get_number block="json get number %key"
-        getNumber(key: string): number {
-            let v = this.get(key);
+        //% blockId=json_get_number block="json get number %key from %json"
+        static getNumber(key: string, json: JsonObject): number {
+            let v = JsonObject.get(key, json);
             return parseInt(v);
         }
 
         /**
          * Get a boolean value ("true"/"false").
          */
-        //% blockId=json_get_bool block="json get boolean %key"
-        getBoolean(key: string): boolean {
-            let v = this.get(key);
+        //% blockId=json_get_bool block="json get boolean %key from %json"
+        static getBoolean(key: string, json: JsonObject): boolean {
+            let v = JsonObject.get(key, json);
             return v == "true";
         }
 
