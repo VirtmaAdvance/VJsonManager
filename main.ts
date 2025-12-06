@@ -208,7 +208,7 @@ namespace VJsonManager {
         /**
          * Set value (stored as string internally).
          */
-        //% blockId=json_set block="json set %key to %value from %json"
+        //% blockId=json_set block="json from %json set %key to %value"
         static set(json: JsonObject, key: string, value: any): void {
             let index = json.indexOfKey(key);
             if (index >= 0) {
