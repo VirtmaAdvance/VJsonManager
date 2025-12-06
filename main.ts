@@ -183,7 +183,7 @@ namespace VJsonManager {
          * @returns
          */
         //% blockId=json_includes block="json includes %value in %array"
-        static find(value: string, array: string[]) {
+        static find(value: string, array: string[]): boolean {
             for(let i=0;i<array.length;i++) {
                 if(array[i]===value)
                     return true;
