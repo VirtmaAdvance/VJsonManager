@@ -174,7 +174,7 @@ namespace VJsonManager {
          */
         //% blockId=json_containsKey block="json contains %key from %json"
         static containsKey(key: string, json: JsonObject): boolean {
-            return JsonObject.includes(key, json._keys);
+            return JsonObject.find(key, json._keys);
         }
         /**
          * Determines if the given value exists within the array.
@@ -183,7 +183,7 @@ namespace VJsonManager {
          * @returns
          */
         //% blockId=json_includes block="json includes %value in %array"
-        static includes(value: string, array: string[]) {
+        static find(value: string, array: string[]) {
             for(let i=0;i<array.length;i++) {
                 if(array[i]===value)
                     return true;
@@ -198,7 +198,7 @@ namespace VJsonManager {
          */
         //% blockId=json_containsValue block="json contains %value from %json"
         static containsValue(value: any, json: JsonObject): boolean {
-            return JsonObject.includes(value, json._values);
+            return JsonObject.find(value, json._values);
         }
 
         /**
