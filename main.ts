@@ -176,8 +176,14 @@ namespace VJsonManager {
         static containsKey(key: string, json: JsonObject): boolean {
             return JsonObject.includes(key, json._keys);
         }
-
-        static includes(value: any, array: any[]) {
+        /**
+         * Determines if the given value exists within the array.
+         * @param value
+         * @param array
+         * @returns
+         */
+        //% blockId=json_includes block="json includes %value in %array"
+        static includes(value: string, array: string[]) {
             for(let i=0;i<array.length;i++) {
                 if(array[i]===value)
                     return true;
