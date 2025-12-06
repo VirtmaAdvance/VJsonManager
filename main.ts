@@ -161,7 +161,7 @@ namespace VJsonManager {
         /**
          * Convenience static wrapper for stringify.
          */
-        //% blockId=json_stringify block="stringify json object %obj from %json"
+        //% blockId=json_stringify block="stringify json object %obj"
         static stringify(obj: JsonObject): string {
             return obj.toString();
         }
