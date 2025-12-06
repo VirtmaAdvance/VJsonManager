@@ -125,7 +125,7 @@ namespace VJsonManager {
                 if (i > 0) result = result + ",";
                 result = result + "\"" + this._keys[i] + "\":";
 
-                let v = this._values[i] ?? "";
+                let v = this._values[i] === undefined ? this._values[i] : "";
 
                 // Decide if we should emit as bare value or quoted string
                 let isNum = true;
