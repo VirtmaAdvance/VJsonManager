@@ -209,7 +209,7 @@ namespace VJsonManager {
         static get(key: string, json: JsonObject): any {
             let index = json.indexOfKey(key);
             if (index >= 0)
-                return json._values[index]??"";
+                return json._values[index] === undefined ? "" : json._values[index];
             return "";
         }
 
@@ -253,7 +253,7 @@ namespace VJsonManager {
         keys(): string[] {
             let copy: string[] = [];
             for (let i = 0; i < this._keys.length; i++) {
-                copy.push(this._keys[i]??"");
+                copy.push(this._keys[i] === undefined ? "" : this._keys[i]);
             }
             return copy;
         }
@@ -276,7 +276,7 @@ namespace VJsonManager {
         //% blockId=json_foreach block="for each key/value in %obj run %handler"
         forEach(handler: (key: string, value: any) => void): void {
             for (let i = 0; i < this._keys.length; i++) {
-                handler(this._keys[i]??"", this._values[i]);
+                handler(this._keys[i]===undefined ? "" : this._keys[i], this._values[i]);
             }
         }
 
