@@ -174,9 +174,16 @@ namespace VJsonManager {
          */
         //% blockId=json_containsKey block="json contains %key from %json"
         static containsKey(key: string, json: JsonObject): boolean {
-            return json._keys.includes(key);
+            return JsonObject.includes(key, json._keys);
         }
 
+        static includes(value: any, array: any[]) {
+            for(let i=0;i<array.length;i++) {
+                if(array[i]===value)
+                    return true;
+            }
+            return false;
+        }
         /**
          * Determines if the specified value exists within the collection.
          * @param value
@@ -185,7 +192,7 @@ namespace VJsonManager {
          */
         //% blockId=json_containsValue block="json contains %value from %json"
         static containsValue(value: any, json: JsonObject): boolean {
-            return json._values.includes(value);
+            return JsonObject.includes(value, json._values);
         }
 
         /**
