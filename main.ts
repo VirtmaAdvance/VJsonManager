@@ -1,4 +1,4 @@
-//% weight=100 color=#0fbc11 icon="\uf005"
+//% weight=100 color=#FF0000 icon="\uf005"
 namespace VJsonManager {
 
     /**
